@@ -1,12 +1,26 @@
-from flask import Flask, url_for
+from flask import Flask, render_template, request, url_for
 from markupsafe import escape
+
+name = 'Yuming Zhang'
+movies = [
+    {'title': 'My Neighbor Totoro', 'year': '1988'},
+    {'title': 'Dead Poets Society', 'year': '1989'},
+    {'title': 'A Perfect World', 'year': '1993'},
+    {'title': 'Leon', 'year': '1994'},
+    {'title': 'Mahjong', 'year': '1996'},
+    {'title': 'Swallowtail Butterfly', 'year': '1996'},
+    {'title': 'King of Comedy', 'year': '1999'},
+    {'title': 'Devils on the Doorstep', 'year': '1999'},
+    {'title': 'WALL-E', 'year': '2008'},
+    {'title': 'The Pork of Music', 'year': '2012'},
+]
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return '<h1>Hello World!</h1> Welcome to my world!<img src="http://helloflask.com/totoro.gif">'
+    return render_template('index.html', name=name, movies=movies)
 
 
 @app.route('/user/<name>')
@@ -17,6 +31,6 @@ def user(name):
 @app.route('/test')
 def test_url_for():
     print(url_for('index'))
-    print(url_for('user', name='germey'))
+    print(url_for('user', name='Yuming Zhang'))
     print(url_for('test_url_for', num=2))
     return 'Test page'
