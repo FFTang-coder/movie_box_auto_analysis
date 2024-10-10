@@ -2,7 +2,8 @@
 *~
 __pycache__
 .DS_Store
-auto_analysis/*
+test/*
 .idea/*
 *.xlsx
+*.db
 *.csv
